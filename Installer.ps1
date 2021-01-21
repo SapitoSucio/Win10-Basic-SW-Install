@@ -119,6 +119,7 @@ function InstallGamingPackages { # You Choose
             $GamingPackages = @(
                 "directx"
                 "discord"
+                "dotnetfx"      # Microsoft .NET Framework (Latest)
                 #"origin"       # I don't like Origin
                 "parsec"
                 "steam"

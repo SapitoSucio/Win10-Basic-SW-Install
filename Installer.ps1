@@ -106,7 +106,7 @@ function InstallPackages {
 }
 
 $Ask = "Do you plan to play Games on this Machine?
-All Gaming clients and Required Game Softwares from Microsoft will be installed.
+All important Gaming clients and Required Game Softwares to Run Games will be installed.
 + Discord included."
 function InstallGamingPackages { # You Choose
 
@@ -154,4 +154,5 @@ $Architecture = CheckOSArchitecture     # Checks if the System is 32-bits or 64-
 $GPU = DetectVideoCard                  # Detects the current GPU
 InstallChocolatey                       # Install Chocolatey on Powershell
 InstallPackages                         # Install the Showed Softwares
+InstallGamingPackages                   # Install the most important Gaming Clients and Required Softwares to Run Games
 RestrictPermissions                     # Lock script usage

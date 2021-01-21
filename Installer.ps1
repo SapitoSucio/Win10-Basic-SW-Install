@@ -35,7 +35,7 @@ function InstallChocolatey {
     Install-Package -Name Chocolatey -Force -ProviderName chocolatey
     $ChocoPath = (Get-Package chocolatey | ?{$_.Name -eq "chocolatey"} | Select @{N="Source";E={((($a=($_.Source -split "\\"))[0..($a.length - 2)]) -join "\"),"Tools\chocolateyInstall" -join "\"}} | Select -ExpandProperty Source)
     & $ChocoPath "upgrade all -y"
-    choco install chocolatey-core.extension --force -y
+    choco install chocolatey-core.extension -y #--force
     
     Write-Host "Creating daily task to automatically upgrade Chocolatey packages"
     # adapted from https://blogs.technet.microsoft.com/heyscriptingguy/2013/11/23/using-scheduled-tasks-and-scheduled-jobs-in-powershell/

@@ -64,6 +64,8 @@ function InstallPackages {
     } elseif ($GPU.contains("NVIDIA")) {
         BeautySectionTemplate -Text "Installing NVIDIA drivers!"
         choco install "geforce-experience" -y
+        choco feature enable -n=useRememberedArgumentsForUpgrades
+        cinst geforce-game-ready-driver --package-parameters="'/dch'"
         choco install "geforce-game-ready-driver" -y
     }
 

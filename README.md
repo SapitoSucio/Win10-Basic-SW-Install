@@ -1,4 +1,8 @@
-# Win10 Basic SW Install
+<h1>
+    <img width=30px src="./lib/images/Windows-10-logo.png"> Win10 Basic SW Install 
+    <img width=30px src="./lib/images/PowerShell-icon.png">
+</h1>
+
 This was made to install all needed softwares on a Post-Install Windows.
 You can modify it as you want.
 

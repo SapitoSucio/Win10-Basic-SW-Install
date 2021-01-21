@@ -37,7 +37,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 - [uBlock Origin for Chrome](https://chocolatey.org/packages/ublockorigin-chrome);
 - [WinRAR](https://chocolatey.org/packages/winrar) ( English only :/ );
 - [VLC](https://chocolatey.org/packages/vlc);
-- [Java SE Runtime Environment](https://chocolatey.org/packages/jre8). (This matches with your Windows Architecture and install the XX-bits only)
+- [Java SE Runtime Environment](https://chocolatey.org/packages/jre8). (This matches with your OS Architecture and install the XX-bits only)
 
 ### [Optional] If you do play Games on PC, you'll want this (probably):
 
@@ -65,6 +65,10 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 - [Spotify](https://chocolatey.org/packages/spotify);
 - [Sys Internals](https://chocolatey.org/packages/sysinternals);
 - [Wireshark](https://chocolatey.org/packages/wireshark).
+
+#### From the Gaming part:
+
+- [Origin](https://chocolatey.org/packages/origin).
 
 ## LICENSE
 

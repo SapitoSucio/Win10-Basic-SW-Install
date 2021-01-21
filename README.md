@@ -28,7 +28,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 ## Softwares that'll be Installed:
 
 - Obviously, [Chocolatey](https://chocolatey.org/why-chocolatey) !!!
-- The Lastest Graphics driver of your GPU; (Except AMD. See [Intel](https://chocolatey.org/packages/intel-graphics-driver) and [NVIDIA](https://chocolatey.org/packages/geforce-game-ready-driver))
+- The Lastest Graphics driver of your GPU (Except AMD. See [Intel](https://chocolatey.org/packages/intel-graphics-driver), including [DSA](https://chocolatey.org/packages/intel-dsa) and [NVIDIA](https://chocolatey.org/packages/geforce-game-ready-driver), including [GeForce Experience](https://chocolatey.org/packages/geforce-experience));
 - [7-Zip](https://chocolatey.org/packages/7zip);
 - [Google Chrome](https://chocolatey.org/packages/GoogleChrome);
 - [Notepad++](https://chocolatey.org/packages/notepadplusplus.install);

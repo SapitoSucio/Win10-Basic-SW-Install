@@ -41,4 +41,5 @@ function TitleWithContinuousCounter ([String] $Text = "Test Text COUNTER", [Int]
 # BeautyTitleTemplate -Text "Text"
 # BeautySectionTemplate -Text "Text"
 # CaptionTemplate -Text "Text"
-# TitleWithContinuousCounter -Text "Text"
+# TitleWithContinuousCounter -Text "Text" -MaxNum 10
+# -MaxNum only need to be set once

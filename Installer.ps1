@@ -45,7 +45,7 @@ function InstallChocolatey {
     Install-Package -Name Chocolatey -Force -ProviderName chocolatey
     $ChocoPath = (Get-Package chocolatey | ?{$_.Name -eq "chocolatey"} | Select @{N="Source";E={((($a=($_.Source -split "\\"))[0..($a.length - 2)]) -join "\"),"Tools\chocolateyInstall" -join "\"}} | Select -ExpandProperty Source)
     & $ChocoPath "upgrade all -y"
-    choco install chocolatey-core.extension --force
+    choco install chocolatey-core.extension --force -y
 
     Write-Host "Installing Packages"
     foreach ($Package in $Packages) {

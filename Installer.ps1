@@ -53,20 +53,28 @@ function InstallPackages {
 
     # Install GPU drivers first
     BeautyTitleTemplate -Text "Installing Graphics driver"
+
     if ($GPU.contains("AMD")) {
+        
         BeautySectionTemplate -Text "Installing AMD drivers!"
         Write-Host "Unfortunately, Chocolatey doesn't have a package for AMD"
+        
 	} elseif ($GPU.contains("Intel")) {
+
         BeautySectionTemplate -Text "Installing Intel drivers!"
         choco install "chocolatey-misc-helpers.extension" -y    # intel-dsa Dependency
         choco install "dotnet4.7" -y                            # intel-dsa Dependency
         choco install "intel-dsa" -y
+        choco install "intel-graphics-driver" -y
+
     } elseif ($GPU.contains("NVIDIA")) {
+
         BeautySectionTemplate -Text "Installing NVIDIA drivers!"
         choco install "geforce-experience" -y
         choco feature enable -n=useRememberedArgumentsForUpgrades
         cinst geforce-game-ready-driver --package-parameters="'/dch'"
         choco install "geforce-game-ready-driver" -y
+
     }
 
     $Packages = @(

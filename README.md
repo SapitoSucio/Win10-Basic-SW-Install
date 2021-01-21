@@ -1,4 +1,4 @@
-# Win10-Basic-SW-Install
+# Win10 Basic SW Install
 This was made to install all needed softwares on a Post-Install Windows.
 You can modify it as you want.
 

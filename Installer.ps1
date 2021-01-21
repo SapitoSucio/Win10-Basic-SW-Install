@@ -115,7 +115,7 @@ QuickPrivilegesElevation                # Check admin rights
 PrepareRun                              # Import modules from lib folder
 UnrestrictPermissions                   # Unlock script usage
 $Architecture = CheckOSArchitecture     # Checks if the System is 32-bits or 64-bits or Something Else
-$GPU = DetectVideoCard
+$GPU = DetectVideoCard                  # Detects the current GPU
 InstallChocolatey                       # Install Chocolatey on Powershell
 InstallPackages                         # Install the Showed Softwares
 RestrictPermissions                     # Lock script usage

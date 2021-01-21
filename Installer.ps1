@@ -35,9 +35,8 @@ function InstallChocolatey {
 function InstallPackages {
     
     $Packages = @(
-        "notepadplusplus.install"
-        "peazip.install"
         #"7zip.install"
+        "avgantivirusfree"
         #"audacity"
         "discord"
         "epicgameslauncher"
@@ -49,9 +48,11 @@ function InstallPackages {
         #"imgburn"
         "jre8"
         #"keepass.install"
+        "notepadplusplus.install"
         "onlyoffice"
         #"paint.net"
         "parsec"
+        "peazip.install"
         #"python"
         "qbittorrent"
         "steam"

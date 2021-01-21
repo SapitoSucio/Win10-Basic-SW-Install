@@ -4,6 +4,24 @@ function QuickPrivilegesElevation {
 }
 # Your script here
 
+Function PrepareRun {
+
+    Push-Location -Path .\lib
+        Get-ChildItem -Recurse *.ps*1 | Unblock-File
+    Pop-Location
+
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\Check-OS-Info.psm1
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\Count-N-Seconds.psm1
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\Setup-Console-Style.psm1
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\Simple-Message-Box.psm1
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\Title-Templates.psm1
+
+    Write-Host "Current Script Folder $PSScriptRoot"
+    Write-Host ""
+    Push-Location $PSScriptRoot
+
+}
+
 function InstallChocolatey {
 
     # Description:
@@ -33,44 +51,70 @@ function InstallChocolatey {
 }
 
 function InstallPackages {
-    
+
+    # Install GPU drivers first
+    BeautyTitleTemplate -Text "Installing Graphics driver"
+    if ($GPU.contains("AMD")) {
+        BeautySectionTemplate -Text "Installing AMD drivers!"
+        # TODO
+	} elseif ($GPU.contains("Intel")) {
+        BeautySectionTemplate -Text "Installing Intel drivers!"
+        choco install "chocolatey-misc-helpers.extension" -y    # intel-dsa Dependency
+        choco install "dotnet4.7" -y                            # intel-dsa Dependency
+        choco install "intel-dsa" -y
+    } elseif ($GPU.contains("NVIDIA")) {
+        BeautySectionTemplate -Text "Installing NVIDIA drivers!"
+        choco install "geforce-experience" -y
+        choco install "geforce-game-ready-driver" -y
+    }
+
     $Packages = @(
-        #"7zip.install"
-        "avgantivirusfree"
+        "7zip.install"
         #"audacity"
+        "directx"
         "discord"
-        "epicgameslauncher"
-        #"firefox"
-        #"geforce-experience"
-        #"geforce-game-ready-driver"
-        "gimp"
+        #"firefox"                              # The person may likes Chrome
         "googlechrome"
         #"imgburn"
+        #"dotnet4.7"                            # intel-dsa Dependency
         "jre8"
         #"keepass.install"
         "notepadplusplus.install"
+        #"obs-studio"
         "onlyoffice"
+        #"origin"
         #"paint.net"
         "parsec"
-        "peazip.install"
+        #"peazip.install"
         #"python"
         "qbittorrent"
         "steam"
         #"sysinternals"
         "ublockorigin-chrome"
-        #"winrar"
+        #"winrar"                               # English only
         "vlc"
         #"wireshark"
     )
+    $TotalPackagesLenght = $Packages.Length+1
 
-    Write-Host "Installing Packages"
+    BeautyTitleTemplate -Text "Installing Packages"
     foreach ($Package in $Packages) {
-        Write-Host "Installing: $Package"
+        TitleWithContinuousCounter -Text "Installing: $Package" -MaxNum $TotalPackagesLenght
         choco install $Package -y # --force
+    }
+
+    # For Java (JRE) correct installation
+    if ($Architecture.contains("32-bits")) {
+        choco install "jre8" -PackageParameters "/exclude:64"
+    } elseif ($Architecture.contains("64-bits")) {
+        choco install "jre8" -PackageParameters "/exclude:32"
     }
     
 }
 
 QuickPrivilegesElevation
+PrepareRun
+$Architecture = CheckOSArchitecture
+$GPU = DetectVideoCard
 InstallChocolatey
 InstallPackages

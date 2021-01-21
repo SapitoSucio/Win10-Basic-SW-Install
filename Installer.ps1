@@ -25,9 +25,7 @@ Function PrepareRun {
 
 function InstallChocolatey {
 
-    # Description:
-    # This script will use Windows package manager to bootstrap Chocolatey and
-    # install a list of packages.
+    # This function will use Windows package manager to bootstrap Chocolatey and install a list of packages.
 
     # Adapted From https://github.com/W4RH4WK/Debloat-Windows-10/blob/master/utils/install-basic-software.ps1
     Write-Host "Setting up Chocolatey software package manager"
@@ -113,11 +111,11 @@ function InstallPackages {
     
 }
 
-QuickPrivilegesElevation
-PrepareRun
-UnrestrictPermissions
-$Architecture = CheckOSArchitecture
+QuickPrivilegesElevation                # Check admin rights
+PrepareRun                              # Import modules from lib folder
+UnrestrictPermissions                   # Unlock script usage
+$Architecture = CheckOSArchitecture     # Checks if the System is 32-bits or 64-bits or Something Else
 $GPU = DetectVideoCard
-InstallChocolatey
-InstallPackages
-RestrictPermissions
+InstallChocolatey                       # Install Chocolatey on Powershell
+InstallPackages                         # Install the Showed Softwares
+RestrictPermissions                     # Lock script usage

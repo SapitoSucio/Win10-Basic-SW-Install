@@ -77,29 +77,33 @@ function InstallPackages {
 
     }
 
-    $Packages = @(
+    $EssentialPackages = @(
         "7zip.install"
-        #"audacity"
-        #"firefox"                              # The person may likes Chrome
         "googlechrome"
-        #"imgburn"
         "notepadplusplus.install"
-        #"obs-studio"
         "onlyoffice"
-        #"paint.net"
-        #"python"
         "qbittorrent"
-        #"spotify"
-        #"sysinternals"
         "ublockorigin-chrome"
         "winrar"                                # English only
         "vlc"
+
+        # [DIY] Remove the # if you want to install something.
+
+        #"audacity"
+        #"brave"
+        #"firefox"                              # The person may likes Chrome
+        #"imgburn"
+        #"obs-studio"
+        #"paint.net"
+        #"python"
+        #"spotify"
+        #"sysinternals"
         #"wireshark"
     )
-    $TotalPackagesLenght = $Packages.Length+1
+    $TotalPackagesLenght = $EssentialPackages.Length+1
 
     BeautyTitleTemplate -Text "Installing Packages"
-    foreach ($Package in $Packages) {
+    foreach ($Package in $EssentialPackages) {
         TitleWithContinuousCounter -Text "Installing: $Package" -MaxNum $TotalPackagesLenght
         choco install $Package -y # --force
     }
@@ -126,17 +130,20 @@ function InstallGamingPackages { # You Choose
             Write-Host "You choose Yes."
             $GamingPackages = @(
                 "directx"
-                "discord"
+                "discord.install"
                 "dotnetfx"      # Microsoft .NET Framework (Latest)
-                #"origin"       # I don't like Origin
                 "parsec"
                 "steam"
-                "vcredist140"   # Microsoft Visual C++ Redistributable for Visual Studio 2015-2019
                 "vcredist2005"  # Microsoft Visual C++ 2005 SP1 Redistributable Package
                 "vcredist2008"  # Microsoft Visual C++ 2008 SP1 Redistributable Package
                 "vcredist2010"  # Microsoft Visual C++ 2010 Redistributable Package
                 "vcredist2012"  # Microsoft Visual C++ 2012 Redistributable Package
                 "vcredist2013"  # Visual C++ Redistributable Packages for Visual Studio 2013
+                "vcredist140"   # Microsoft Visual C++ Redistributable for Visual Studio 2015-2019
+                
+                # [DIY] Remove the # if you want to install something.
+
+                #"origin"       # [DIY] I don't like Origin
             )
             $TotalPackagesLenght = $TotalPackagesLenght + $GamingPackages.Length
         

@@ -10,11 +10,12 @@ Function PrepareRun {
         Get-ChildItem -Recurse *.ps*1 | Unblock-File
     Pop-Location
 
-    Import-Module -DisableNameChecking $PSScriptRoot\lib\Check-OS-Info.psm1
-    Import-Module -DisableNameChecking $PSScriptRoot\lib\Count-N-Seconds.psm1
-    Import-Module -DisableNameChecking $PSScriptRoot\lib\Setup-Console-Style.psm1
-    Import-Module -DisableNameChecking $PSScriptRoot\lib\Simple-Message-Box.psm1
-    Import-Module -DisableNameChecking $PSScriptRoot\lib\Title-Templates.psm1
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Check-OS-Info.psm1"
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Count-N-Seconds.psm1"
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Set-Script-Policy.psm1"
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Setup-Console-Style.psm1"
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Simple-Message-Box.psm1"
+    Import-Module -DisableNameChecking $PSScriptRoot\lib\"Title-Templates.psm1"
 
     Write-Host "Current Script Folder $PSScriptRoot"
     Write-Host ""
@@ -114,7 +115,9 @@ function InstallPackages {
 
 QuickPrivilegesElevation
 PrepareRun
+UnrestrictPermissions
 $Architecture = CheckOSArchitecture
 $GPU = DetectVideoCard
 InstallChocolatey
 InstallPackages
+RestrictPermissions

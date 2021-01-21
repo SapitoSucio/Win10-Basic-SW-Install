@@ -33,14 +33,15 @@ function DetectVideoCard() {
     if ($GPU.contains("AMD") -or $GPU.contains("Radeon")) {
 		Write-Host "AMD GPU found!"
         $GPU = "AMD"
-	} elseif ($GPU.contains("NVIDIA")) {
-        Write-Host "NVIDIA GPU found!"
-        $GPU = "NVIDIA"
 	} elseif ($GPU.contains("Intel")) {
         Write-Host "Intel GPU found!"
         $GPU = "Intel"
+	} elseif ($GPU.contains("NVIDIA")) {
+        Write-Host "NVIDIA GPU found!"
+        $GPU = "NVIDIA"
     } else {
         Write-Host "GPU_NOT_FOUND (NEW/CONFIDENTIAL?)"
+        $GPU = "GPU_NOT_FOUND (NEW/CONFIDENTIAL?)"
     }
 
     # Note that $GPU is not Global

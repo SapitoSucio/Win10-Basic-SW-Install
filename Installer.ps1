@@ -174,3 +174,4 @@ InstallChocolatey                       # Install Chocolatey on Powershell
 InstallPackages                         # Install the Showed Softwares
 InstallGamingPackages                   # Install the most important Gaming Clients and Required Softwares to Run Games
 RestrictPermissions                     # Lock script usage
+Taskkill /F /IM $PID                    # Kill this task by PID because it won't exit with the command 'exit'

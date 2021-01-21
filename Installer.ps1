@@ -8,9 +8,32 @@ function InstallChocolatey {
 
     # Description:
     # This script will use Windows package manager to bootstrap Chocolatey and
-    # install a list of packages. Script will also install Sysinternals Utilities
-    # into your default drive's root directory.
+    # install a list of packages.
 
+    # Adapted From https://github.com/W4RH4WK/Debloat-Windows-10/blob/master/utils/install-basic-software.ps1
+    Write-Host "Setting up Chocolatey software package manager"
+    Get-PackageProvider -Name chocolatey -Force
+    
+    Write-Host "Setting up Full Chocolatey Install"
+    Install-Package -Name Chocolatey -Force -ProviderName chocolatey
+    $ChocoPath = (Get-Package chocolatey | ?{$_.Name -eq "chocolatey"} | Select @{N="Source";E={((($a=($_.Source -split "\\"))[0..($a.length - 2)]) -join "\"),"Tools\chocolateyInstall" -join "\"}} | Select -ExpandProperty Source)
+    & $ChocoPath "upgrade all -y"
+    choco install chocolatey-core.extension --force -y
+    
+    Write-Host "Creating daily task to automatically upgrade Chocolatey packages"
+    # adapted from https://blogs.technet.microsoft.com/heyscriptingguy/2013/11/23/using-scheduled-tasks-and-scheduled-jobs-in-powershell/
+    $ScheduledJob = @{
+        Name = "Chocolatey Daily Upgrade"
+        ScriptBlock = {choco upgrade all -y}
+        Trigger = New-JobTrigger -Daily -at 2am
+        ScheduledJobOption = New-ScheduledJobOption -RunElevated -MultipleInstancePolicy StopExisting -RequireNetwork
+    }
+    Register-ScheduledJob @ScheduledJob
+    
+}
+
+function InstallPackages {
+    
     $Packages = @(
         "notepadplusplus.install"
         "peazip.install"
@@ -39,33 +62,14 @@ function InstallChocolatey {
         #"wireshark"
     )
 
-    # Adapted From https://github.com/W4RH4WK/Debloat-Windows-10/blob/master/utils/install-basic-software.ps1
-    Write-Host "Setting up Chocolatey software package manager"
-    Get-PackageProvider -Name chocolatey -Force
-
-    Write-Host "Setting up Full Chocolatey Install"
-    Install-Package -Name Chocolatey -Force -ProviderName chocolatey
-    $ChocoPath = (Get-Package chocolatey | ?{$_.Name -eq "chocolatey"} | Select @{N="Source";E={((($a=($_.Source -split "\\"))[0..($a.length - 2)]) -join "\"),"Tools\chocolateyInstall" -join "\"}} | Select -ExpandProperty Source)
-    & $ChocoPath "upgrade all -y"
-    choco install chocolatey-core.extension --force -y
-
     Write-Host "Installing Packages"
     foreach ($Package in $Packages) {
         Write-Host "Installing: $Package"
         choco install $Package -y # --force
     }
-
-    Write-Host "Creating daily task to automatically upgrade Chocolatey packages"
-    # adapted from https://blogs.technet.microsoft.com/heyscriptingguy/2013/11/23/using-scheduled-tasks-and-scheduled-jobs-in-powershell/
-    $ScheduledJob = @{
-        Name = "Chocolatey Daily Upgrade"
-        ScriptBlock = {choco upgrade all -y}
-        Trigger = New-JobTrigger -Daily -at 2am
-        ScheduledJobOption = New-ScheduledJobOption -RunElevated -MultipleInstancePolicy StopExisting -RequireNetwork
-    }
-    Register-ScheduledJob @ScheduledJob
-
+    
 }
 
 QuickPrivilegesElevation
 InstallChocolatey
+InstallPackages

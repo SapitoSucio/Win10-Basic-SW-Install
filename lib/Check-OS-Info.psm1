@@ -1,4 +1,4 @@
-# Function to Check if a system is 32-bits or 64-bits or Something Else
+# Checks if the System is 32-bits or 64-bits or Something Else
 function CheckOSArchitecture {
 	$Global:Architecture = wmic os get osarchitecture
 	if ($Architecture -like "*32 bits*") {
@@ -18,7 +18,7 @@ function CheckOSArchitecture {
     return $Architecture
 }
 
-# Function to detect the current GPU
+# Detects the current GPU
 function DetectVideoCard() {
 	$Global:GPU
 	# https://community.spiceworks.com/topic/1543645-powershell-get-wmiobject-win32_videocontroller-multiple-graphics-cards

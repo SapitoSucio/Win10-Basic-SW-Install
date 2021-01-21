@@ -6,7 +6,7 @@ You can modify it as you want.
 
 The code is always on the `main` branch, this is the *Bleeding-Edge* but always functional version.
 
-[Download [Zip]](https://github.com/LeDragoX/Win10-Basic-SW-Install/archive/main.zip)
+- [Download [Zip]](https://github.com/LeDragoX/Win10-Basic-SW-Install/archive/main.zip)
 
 ## Usage Requirements
 

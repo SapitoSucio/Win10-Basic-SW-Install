@@ -36,7 +36,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 - [VLC](https://chocolatey.org/packages/vlc);
 - [Java SE Runtime Environment](https://chocolatey.org/packages/jre8). (This matches with your Windows Architecture and install the XX-bits only)
 
-### If you do play Games on PC, you will want this (probably):
+### [Optional] If you do play Games on PC, you will want this (probably):
 
 - [DirectX](https://chocolatey.org/packages/directx);
 - [Discord](https://chocolatey.org/packages/discord.install);

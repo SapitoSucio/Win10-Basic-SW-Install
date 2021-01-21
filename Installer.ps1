@@ -15,25 +15,27 @@ function InstallChocolatey {
         "notepadplusplus.install"
         "peazip.install"
         #"7zip.install"
-        #"aimp"
         #"audacity"
-        #"autoit"
-        #"classic-shell"
-        #"filezilla"
+        "discord"
+        "epicgameslauncher"
         #"firefox"
+        #"geforce-experience"
+        #"geforce-game-ready-driver"
         "gimp"
-        #"google-chrome-x64"
+        "googlechrome"
         #"imgburn"
+        "jre8"
         #"keepass.install"
+        "onlyoffice"
         #"paint.net"
-        #"putty"
+        "parsec"
         #"python"
         "qbittorrent"
-        #"speedcrunch"
+        "steam"
         #"sysinternals"
-        #"thunderbird"
+        "ublockorigin-chrome"
+        #"winrar"
         "vlc"
-        #"windirstat"
         #"wireshark"
     )
 
@@ -50,7 +52,7 @@ function InstallChocolatey {
     Write-Host "Installing Packages"
     foreach ($Package in $Packages) {
         Write-Host "Installing: $Package"
-        choco install $Package --force -y
+        choco install $Package -y # --force
     }
 
     Write-Host "Creating daily task to automatically upgrade Chocolatey packages"
@@ -64,3 +66,6 @@ function InstallChocolatey {
     Register-ScheduledJob @ScheduledJob
 
 }
+
+QuickPrivilegesElevation
+InstallChocolatey

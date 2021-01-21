@@ -90,7 +90,7 @@ function InstallPackages {
         "steam"
         #"sysinternals"
         "ublockorigin-chrome"
-        #"winrar"                               # English only
+        "winrar"                                # English only
         "vlc"
         #"wireshark"
     )

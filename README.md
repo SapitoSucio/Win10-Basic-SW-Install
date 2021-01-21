@@ -32,7 +32,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 - [ONLYOffice Editors](https://chocolatey.org/packages/onlyoffice);
 - [qBitTorrent](https://chocolatey.org/packages/qbittorrent);
 - [uBlock Origin for Chrome](https://chocolatey.org/packages/ublockorigin-chrome);
-- [WinRAR ( English only :/ )](https://chocolatey.org/packages/winrar);
+- [WinRAR](https://chocolatey.org/packages/winrar) ( English only :/ );
 - [VLC](https://chocolatey.org/packages/vlc);
 - [Java SE Runtime Environment](https://chocolatey.org/packages/jre8). (This matches with your Windows Architecture and install the XX-bits only)
 
@@ -40,7 +40,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 
 - [DirectX](https://chocolatey.org/packages/directx);
 - [Discord](https://chocolatey.org/packages/discord.install);
-- [Microsoft .NET Framework](https://chocolatey.org/packages/dotnetfx); (Latest)
+- [Microsoft .NET Framework](https://chocolatey.org/packages/dotnetfx) (Latest); 
 - [Parsec](https://chocolatey.org/packages/parsec);
 - [Steam](https://chocolatey.org/packages/steam);
 - [Microsoft Visual C++ 2005 SP1 Redistributable Package](https://chocolatey.org/packages/vcredist2005);
@@ -58,7 +58,7 @@ Set-ExecutionPolicy Unrestricted -Scope CurrentUser -Force; ls -Recurse .ps1 | U
 - [ImgBurn](https://chocolatey.org/packages/imgburn);
 - [OBS Studio](https://chocolatey.org/packages/obs-studio);
 - [Paint.NET](https://chocolatey.org/packages/paint.net);
-- [Python](https://chocolatey.org/packages/python/); (Latest)
+- [Python](https://chocolatey.org/packages/python/) (Latest);
 - [Spotify](https://chocolatey.org/packages/spotify);
 - [Sys Internals](https://chocolatey.org/packages/sysinternals);
 - [Wireshark](https://chocolatey.org/packages/wireshark).

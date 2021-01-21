@@ -84,7 +84,6 @@ function InstallPackages {
         #"origin"
         #"paint.net"
         "parsec"
-        #"peazip.install"
         #"python"
         "qbittorrent"
         "steam"

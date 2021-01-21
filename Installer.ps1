@@ -75,9 +75,6 @@ function InstallPackages {
         #"firefox"                              # The person may likes Chrome
         "googlechrome"
         #"imgburn"
-        #"dotnet4.7"                            # intel-dsa Dependency
-        "jre8"
-        #"keepass.install"
         "notepadplusplus.install"
         #"obs-studio"
         "onlyoffice"
@@ -86,6 +83,7 @@ function InstallPackages {
         "parsec"
         #"python"
         "qbittorrent"
+        #"spotify"
         "steam"
         #"sysinternals"
         "ublockorigin-chrome"

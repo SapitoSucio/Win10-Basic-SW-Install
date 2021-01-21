@@ -70,21 +70,16 @@ function InstallPackages {
     $Packages = @(
         "7zip.install"
         #"audacity"
-        "directx"
-        "discord"
         #"firefox"                              # The person may likes Chrome
         "googlechrome"
         #"imgburn"
         "notepadplusplus.install"
         #"obs-studio"
         "onlyoffice"
-        #"origin"
         #"paint.net"
-        "parsec"
         #"python"
         "qbittorrent"
         #"spotify"
-        "steam"
         #"sysinternals"
         "ublockorigin-chrome"
         "winrar"                                # English only
@@ -108,6 +103,47 @@ function InstallPackages {
         choco install "jre8" -PackageParameters "/exclude:32"
     }
     
+}
+
+$Ask = "Do you plan to play Games on this Machine?
+All Gaming clients and Required Game Softwares from Microsoft will be installed.
++ Discord included."
+function InstallGamingPackages { # You Choose
+
+    switch (ShowQuestion -Title "Read carefully" -Message $Ask) {
+        'Yes' {
+
+            Write-Host "You choose Yes."
+            $GamingPackages = @(
+                "directx"
+                "discord"
+                #"origin"       # I don't like Origin
+                "parsec"
+                "steam"
+                "vcredist140"   # Microsoft Visual C++ Redistributable for Visual Studio 2015-2019
+                "vcredist2005"  # Microsoft Visual C++ 2005 SP1 Redistributable Package
+                "vcredist2008"  # Microsoft Visual C++ 2008 SP1 Redistributable Package
+                "vcredist2010"  # Microsoft Visual C++ 2010 Redistributable Package
+                "vcredist2012"  # Microsoft Visual C++ 2012 Redistributable Package
+                "vcredist2013"  # Visual C++ Redistributable Packages for Visual Studio 2013
+            )
+            $TotalPackagesLenght = $TotalPackagesLenght + $GamingPackages.Length
+        
+            BeautyTitleTemplate -Text "Installing Packages"
+            foreach ($Package in $GamingPackages) {
+                TitleWithContinuousCounter -Text "Installing: $Package" -MaxNum $TotalPackagesLenght
+                choco install $Package -y # --force
+            }
+
+        }
+        'No' {
+            Write-Host "You choose No. (No = Cancel)"
+        }
+        'Cancel' { # With Yes, No and Cancel, the user can press Esc to exit
+            Write-Host "You choose Cancel. (Cancel = No)"
+        }
+    }
+
 }
 
 QuickPrivilegesElevation                # Check admin rights

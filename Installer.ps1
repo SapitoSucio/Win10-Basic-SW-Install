@@ -55,7 +55,7 @@ function InstallPackages {
     BeautyTitleTemplate -Text "Installing Graphics driver"
     if ($GPU.contains("AMD")) {
         BeautySectionTemplate -Text "Installing AMD drivers!"
-        # TODO
+        # Unfortunately, Chocolatey doesn't have a package for AMD
 	} elseif ($GPU.contains("Intel")) {
         BeautySectionTemplate -Text "Installing Intel drivers!"
         choco install "chocolatey-misc-helpers.extension" -y    # intel-dsa Dependency

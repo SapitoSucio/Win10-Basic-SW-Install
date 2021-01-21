@@ -2,6 +2,9 @@
 This was made to install all needed softwares on a Post-Install Windows.
 You can modify it as you want.
 
+The best part is, if a Software was installed with Chocolatey,
+in this specific case, they'll upgrade automatically.
+
 ## Download Latest Version
 
 The code is always on the `main` branch, this is the *Bleeding-Edge* but always functional version.

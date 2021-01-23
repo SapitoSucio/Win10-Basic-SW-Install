@@ -111,10 +111,10 @@ function InstallPackages {
     # For Java (JRE) correct installation
     if ($Architecture.contains("32-bits")) {
         TitleWithContinuousCounter -Text "Installing: jre8 (32-bits)"
-        choco install "jre8" -PackageParameters "/exclude:64"
+        choco install "jre8" -PackageParameters "/exclude:64" -y
     } elseif ($Architecture.contains("64-bits")) {
         TitleWithContinuousCounter -Text "Installing: jre8 (64-bits)"
-        choco install "jre8" -PackageParameters "/exclude:32"
+        choco install "jre8" -PackageParameters "/exclude:32" -y
     }
     
 }

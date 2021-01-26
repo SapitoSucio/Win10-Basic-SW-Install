@@ -167,7 +167,7 @@ function InstallGamingPackages { # You Choose
 QuickPrivilegesElevation                # Check admin rights
 PrepareRun                              # Import modules from lib folder
 UnrestrictPermissions                   # Unlock script usage
-SetupConsoleStyle                       # Just fix the font on the PS console
+SetupConsoleStyle                       # Make the Console looks how i want
 $Architecture = CheckOSArchitecture     # Checks if the System is 32-bits or 64-bits or Something Else
 $GPU = DetectVideoCard                  # Detects the current GPU
 InstallChocolatey                       # Install Chocolatey on Powershell
